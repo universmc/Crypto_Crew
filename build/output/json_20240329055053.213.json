@@ -1,0 +1,46 @@
+Bien sûr, voici maintenant le code HTML, CSS et JavaScript pour afficher dynamiquement le contenu du fichier JSON sur une page web :
+
+HTML :
+```css
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Page d'accueil</title>
+</head>
+<body>
+    <div id="content"></div>
+    <script src="script.js"></script>
+</body>
+</html>
+```
+CSS (styles.css) :
+```css
+body {
+    font-family: Arial, sans-serif;
+}
+
+#content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+```
+JavaScript (script.js) :
+```javascript
+fetch('data.json')
+  .then(response => response.json())
+  .then(data => {
+    const content = document.getElementById('content');
+    const html = `
+      <h1>${data.title}</h1>
+      <p>${data.description}</p>
+    `;
+    content.innerHTML = html;
+  })
+  .catch(error => console.error(error));
+```
+Dans ce code, le script utilise la méthode `fetch` pour récupérer le contenu du fichier `data.json` et l'afficher sur la page web. Le contenu JSON est inséré dans la balise HTML `<div id="content"></div>` grâce à la méthode `innerHTML`.
+
+Assurez-vous de placer le fichier JSON dans le même répertoire que les fichiers HTML, CSS et JavaScript pour que cela fonctionne correctement.
